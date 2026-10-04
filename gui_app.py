@@ -35,12 +35,13 @@ from PySide6.QtWidgets import (
 import icons
 import settings_store
 import terminal_switch as ts
+import updater
 
 APP_NAME = "VSAT STAR"
 APP_VERSION = "4.3"
 APP_TITLE = f"{APP_NAME} S/W v{APP_VERSION}"
 APP_AUTHOR = "Sukhoverkhii Dmitrii"
-GITHUB_URL = ""  # ссылка на открытый исходный код - добавить в следующем обновлении
+GITHUB_URL = updater.REPO_URL  # открытый исходный код
 
 AUTO_REFRESH_MINUTES = 10   # как часто программа сама обновляет трафик
 REMIND_MINUTES = 30         # за сколько минут до конца дневного лимита напомнить
@@ -586,6 +587,19 @@ def drop_hover_state(*widgets):
 
 # ---------- Диалог настроек (логин/пароль) ----------
 
+class UpdateCheckWorker(QThread):
+    found = Signal(dict)   # {"version": ..., "url": ...}
+    failed = Signal(str)
+
+    def run(self):
+        try:
+            self.found.emit(updater.check_latest())
+        except requests.exceptions.RequestException:
+            self.failed.emit("Нет связи с GitHub")
+        except Exception as e:
+            self.failed.emit(str(e))
+
+
 class SettingsDialog(QDialog):
     MARGIN = 14
     RADIUS = 18
@@ -701,9 +715,12 @@ class SettingsDialog(QDialog):
                 border-radius: 12px;
             }
         """)
-        lay = QHBoxLayout(card)
-        lay.setContentsMargins(10, 10, 10, 10)
+        outer = QVBoxLayout(card)
+        outer.setContentsMargins(10, 10, 10, 10)
+        outer.setSpacing(10)
+        lay = QHBoxLayout()
         lay.setSpacing(10)
+        outer.addLayout(lay)
 
         logo = QLabel()
         logo.setPixmap(icons.app_icon().pixmap(QSize(40, 40)))
@@ -729,7 +746,56 @@ class SettingsDialog(QDialog):
         col.addWidget(author)
         col.addWidget(source)
         lay.addLayout(col, stretch=1)
+
+        # Проверка обновлений
+        update_row = QVBoxLayout()
+        update_row.setSpacing(6)
+        self.update_btn = QPushButton("  Проверить обновления")
+        self.update_btn.setIcon(icons.icon("refresh"))
+        self.update_btn.setIconSize(QSize(14, 14))
+        self.update_btn.setCursor(Qt.PointingHandCursor)
+        self.update_btn.setStyleSheet(GLASS_BUTTON_QSS.replace("padding: 9px 16px", "padding: 6px 10px")
+                                      .replace("font-size: 13px", "font-size: 11px"))
+        self.update_btn.clicked.connect(self._check_updates)
+        self.update_status = QLabel("")
+        self.update_status.setOpenExternalLinks(True)
+        self.update_status.setStyleSheet("color: rgba(255,255,255,170); font-size: 10px;")
+        self.update_status.setAlignment(Qt.AlignCenter)
+        self.update_status.setVisible(False)
+        update_row.addWidget(self.update_btn)
+        update_row.addWidget(self.update_status)
+        outer.addLayout(update_row)
         return card
+
+    def _check_updates(self):
+        self.update_btn.setEnabled(False)
+        self.update_status.setStyleSheet("color: rgba(255,255,255,170); font-size: 10px;")
+        self.update_status.setText("Проверяю…")
+        self.update_status.setVisible(True)
+        # Поток привязан к главному окну - не оборвётся, если диалог закроют раньше
+        worker = UpdateCheckWorker(self.parent())
+        worker.found.connect(self._on_update_info)
+        worker.failed.connect(self._on_update_failed)
+        worker.finished.connect(worker.deleteLater)
+        self._update_worker = worker
+        worker.start()
+
+    def _on_update_info(self, info):
+        self.update_btn.setEnabled(True)
+        if updater.is_newer(info["version"], APP_VERSION):
+            self.update_status.setStyleSheet(f"color: {STATUS_COLORS['warn']}; font-size: 10px;")
+            self.update_status.setText(
+                f"Доступна v{info['version']} — <a href='{info['url']}' "
+                f"style='color:{PRIMARY}; text-decoration:none;'>скачать</a>"
+            )
+        else:
+            self.update_status.setStyleSheet(f"color: {STATUS_COLORS['ok']}; font-size: 10px;")
+            self.update_status.setText("У вас последняя версия")
+
+    def _on_update_failed(self, message):
+        self.update_btn.setEnabled(True)
+        self.update_status.setStyleSheet(f"color: {STATUS_COLORS['error']}; font-size: 10px;")
+        self.update_status.setText(message)
 
     def _toggle_password(self):
         hidden = self.password_edit.echoMode() == QLineEdit.Password
