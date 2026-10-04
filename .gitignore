@@ -1,0 +1,12 @@
+# Личные данные - логин/пароль и страница трафика. НЕ публиковать!
+vsat_star_settings.db
+last_card_usage.html
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Сборка PyInstaller
+build/
+dist/
