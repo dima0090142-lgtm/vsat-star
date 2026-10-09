@@ -10,8 +10,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/vsBackground"
-        app:title="@string/settings" />
+        android:background="?attr/vsToolbarBg"
+        app:navigationIconTint="?attr/vsToolbarText"
+        app:title="@string/settings"
+        app:titleTextColor="?attr/vsToolbarText" />
 
     <ScrollView
         android:layout_width="match_parent"
