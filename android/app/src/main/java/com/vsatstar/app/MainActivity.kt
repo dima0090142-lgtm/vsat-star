@@ -56,6 +56,13 @@ class MainActivity : AppCompatActivity() {
         b.rowVsat.setOnClickListener { act(Action.VSAT) }
         b.rowOff.setOnClickListener { act(Action.DISCONNECT) }
         b.btnRefresh.setOnClickListener { act(Action.USAGE) }
+        b.swipeRefresh.setColorSchemeColors(themeColor(R.attr.vsAccent))
+        b.swipeRefresh.setProgressBackgroundColorSchemeColor(themeColor(R.attr.vsSurface))
+        b.swipeRefresh.setOnRefreshListener {
+            Vsat.clearError()
+            // Запрос не начался (уже идёт другой) - сразу убираем индикатор
+            if (!Vsat.perform(Action.USAGE)) b.swipeRefresh.isRefreshing = Vsat.isBusy
+        }
         b.btnOpenSettings.setOnClickListener { openSettings() }
 
         setupThemeDetails()
@@ -192,6 +199,7 @@ class MainActivity : AppCompatActivity() {
             themeColor(if (s.isError && !busy) R.attr.vsDanger else R.attr.vsTextSecondary)
         )
         b.progress.visibility = if (busy) View.VISIBLE else View.INVISIBLE
+        if (!busy) b.swipeRefresh.isRefreshing = false
 
         renderTerminalRow(rowStarlink, ConnState.STARLINK, s)
         renderTerminalRow(rowVsat, ConnState.VSAT, s)
@@ -214,7 +222,7 @@ class MainActivity : AppCompatActivity() {
         b.valRemainingData.text = u?.remainingData ?: "—"
         b.valRemainingTime.text = u?.remainingTime ?: "—"
         b.valRemainingTime.setTextColor(themeColor(if (s.lowTime) R.attr.vsWarn else R.attr.vsText))
-        b.usageCaption.text = s.usageCaption.ifEmpty { "авто каждые 10 мин" }
+        b.usageCaption.text = s.usageCaption.ifEmpty { "потяните вниз, чтобы обновить" }
     }
 
     private fun renderTerminalRow(row: Row, target: ConnState, s: UiState) {
