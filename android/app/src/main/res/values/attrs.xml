@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Цвета и форма, которые меняются вместе с темой оформления -->
+    <attr name="vsBackground" format="color" />
+    <attr name="vsSurface" format="color" />
+    <attr name="vsText" format="color" />
+    <attr name="vsTextSecondary" format="color" />
+    <attr name="vsAccent" format="color" />
+    <attr name="vsOnAccent" format="color" />
+    <attr name="vsToolbarBg" format="color" />
+    <attr name="vsToolbarText" format="color" />
+    <attr name="vsStroke" format="color" />
+    <attr name="vsStrokeWidth" format="dimension" />
+    <attr name="vsRadius" format="dimension" />
+    <attr name="vsStarlink" format="color" />
+    <attr name="vsVsat" format="color" />
+    <attr name="vsOk" format="color" />
+    <attr name="vsWarn" format="color" />
+    <attr name="vsDanger" format="color" />
+    <attr name="vsNeutral" format="color" />
+</resources>

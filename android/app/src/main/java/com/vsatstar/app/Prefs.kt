@@ -60,6 +60,10 @@ object Prefs {
         get() = sp.getBoolean("auto_off", false)
         set(value) = sp.edit { putBoolean("auto_off", value) }
 
+    var theme: AppTheme
+        get() = AppTheme.of(sp.getString("theme", null))
+        set(value) = sp.edit { putString("theme", value.name) }
+
     /** Нужен ли фоновый сервис (значок в шторке или автоотключение). */
     val serviceNeeded: Boolean
         get() = showStatusIcon || autoOff

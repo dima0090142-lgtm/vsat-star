@@ -2,7 +2,9 @@
 <resources>
     <string name="app_name">VSAT STAR</string>
     <string name="settings">Настройки</string>
-    <string name="disconnect">Отключить</string>
+    <string name="disconnect">Отключить интернет</string>
+    <string name="current_connection">Сейчас</string>
+    <string name="section_terminal">Подключение</string>
     <string name="traffic">Трафик</string>
     <string name="refresh">Обновить трафик</string>
     <string name="downloaded">Загружено</string>
@@ -26,6 +28,13 @@
     <string name="auto_off">Автоотключение интернета</string>
     <string name="auto_off_desc">Если через Wi-Fi телефона час почти нет трафика (меньше 2 МБ), приложение само завершит сессию, чтобы не тратить лимит. Учитывается только трафик этого телефона. Пока функция включена, в шторке висит уведомление.</string>
     <string name="save">Сохранить</string>
+    <string name="section_theme">Оформление</string>
+    <string name="theme_classic">Обычная</string>
+    <string name="theme_classic_desc">Спокойная светлая или тёмная - как в системе</string>
+    <string name="theme_telegram">Telegram</string>
+    <string name="theme_telegram_desc">Синяя шапка, списки и галочки как в мессенджере</string>
+    <string name="theme_terminal">Терминал (MS-DOS / Linux)</string>
+    <string name="theme_terminal_desc">Зелёный текст на чёрном, моноширинный шрифт</string>
     <string name="section_about">О программе</string>
     <string name="github">Исходный код на GitHub</string>
     <string name="author">Автор: Sukhoverkhii Dmitrii</string>

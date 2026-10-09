@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="starlink">#38BDF8</color>
-    <color name="vsat">#C084FC</color>
-    <color name="ok">#4ADE80</color>
-    <color name="warn">#FACC15</color>
-    <color name="danger">#F87171</color>
-    <color name="neutral">#CBD5E1</color>
-    <color name="on_accent">#0B1220</color>
+    <color name="classic_bg">#111317</color>
+    <color name="classic_surface">#1B1E24</color>
+    <color name="classic_text">#ECEEF1</color>
+    <color name="classic_text2">#9AA1AB</color>
+    <color name="classic_accent">#6E9EF5</color>
+    <color name="classic_stroke">#2A2E36</color>
+    <color name="classic_starlink">#6E9EF5</color>
+    <color name="classic_vsat">#2DB7A6</color>
+    <color name="classic_ok">#4CC274</color>
+    <color name="classic_warn">#E7A33E</color>
+    <color name="classic_danger">#F06A6A</color>
+    <color name="classic_neutral">#6B7280</color>
 
-    <color name="background">#0B1220</color>
-    <color name="surface">#141E30</color>
-    <color name="surface_variant">#1E293B</color>
-    <color name="text_primary">#F1F5F9</color>
-    <color name="text_secondary">#94A3B8</color>
+    <color name="tg_bg">#0E1621</color>
+    <color name="tg_surface">#17212B</color>
+    <color name="tg_text">#FFFFFF</color>
+    <color name="tg_text2">#708499</color>
+    <color name="tg_accent">#5EA8E8</color>
+    <color name="tg_toolbar">#232E3C</color>
+    <color name="tg_stroke">#101921</color>
+    <color name="tg_starlink">#5EA8E8</color>
+    <color name="tg_vsat">#A98CEB</color>
+    <color name="tg_ok">#5FC35E</color>
+    <color name="tg_warn">#F5B841</color>
+    <color name="tg_danger">#EF5B5B</color>
+    <color name="tg_neutral">#5B6B7C</color>
 </resources>

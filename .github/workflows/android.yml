@@ -35,6 +35,12 @@ jobs:
       - name: Переименовать APK
         run: cp app/build/outputs/apk/release/app-release.apk VsatStar.apk
 
+      - name: Скриншоты тем
+        run: |
+          mkdir -p screenshots
+          for f in app/build/screenshots/*.png; do cp "$f" "screenshots/screen_$(basename "$f")"; done
+          ls screenshots
+
       - uses: actions/upload-artifact@v4
         with:
           name: VsatStar-apk
@@ -54,5 +60,7 @@ jobs:
           body: |
             Последняя сборка Android-приложения (коммит ${{ github.sha }}).
             Скачайте VsatStar.apk на телефон и установите.
-          files: android/VsatStar.apk
+          files: |
+            android/VsatStar.apk
+            android/screenshots/*.png
           fail_on_unmatched_files: true

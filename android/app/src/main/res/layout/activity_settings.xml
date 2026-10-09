@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/vsBackground"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/background"
+        android:background="?attr/vsBackground"
         app:title="@string/settings" />
 
     <ScrollView
@@ -26,7 +26,7 @@
             android:paddingBottom="16dp">
 
             <TextView
-                style="@style/SectionTitle"
+                style="@style/SectionHeader"
                 android:text="@string/section_account" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +76,47 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/SectionTitle"
+                style="@style/SectionHeader"
+                android:text="@string/section_theme" />
+
+            <RadioGroup
+                android:id="@+id/themeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeClassic"
+                    style="@style/SettingSwitch"
+                    android:text="@string/theme_classic" />
+
+                <TextView
+                    style="@style/SettingDesc"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/theme_classic_desc" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeTelegram"
+                    style="@style/SettingSwitch"
+                    android:text="@string/theme_telegram" />
+
+                <TextView
+                    style="@style/SettingDesc"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/theme_telegram_desc" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeTerminal"
+                    style="@style/SettingSwitch"
+                    android:text="@string/theme_terminal" />
+
+                <TextView
+                    style="@style/SettingDesc"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/theme_terminal_desc" />
+            </RadioGroup>
+
+            <TextView
+                style="@style/SectionHeader"
                 android:text="@string/section_notifications" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
@@ -98,9 +138,9 @@
                 android:text="@string/reminder_desc" />
 
             <TextView
-                style="@style/SectionTitle"
+                style="@style/SectionHeader"
                 android:text="@string/section_experimental"
-                android:textColor="@color/warn" />
+                android:textColor="?attr/vsWarn" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/switchAutoOff"
@@ -112,14 +152,14 @@
                 android:text="@string/auto_off_desc" />
 
             <TextView
-                style="@style/SectionTitle"
+                style="@style/SectionHeader"
                 android:text="@string/section_about" />
 
             <TextView
                 android:id="@+id/version"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_primary"
+                android:textColor="?attr/vsText"
                 android:textSize="15sp" />
 
             <TextView
@@ -127,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="@string/author"
-                android:textColor="@color/text_secondary"
+                android:textColor="?attr/vsTextSecondary"
                 android:textSize="13sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -147,5 +187,5 @@
         android:layout_margin="16dp"
         android:text="@string/save"
         android:textSize="16sp"
-        app:cornerRadius="20dp" />
+        app:cornerRadius="?attr/vsRadius" />
 </LinearLayout>

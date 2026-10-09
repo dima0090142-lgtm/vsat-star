@@ -142,6 +142,11 @@ object Vsat {
         }
     }
 
+    /** Только для скриншот-тестов: подставить состояние экрана. */
+    internal fun previewState(state: UiState) {
+        _state.value = state
+    }
+
     fun clearError() {
         _state.update { if (it.isError) it.copy(isError = false, detail = sinceText(it.conn, Prefs.stateSince)) else it }
     }

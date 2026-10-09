@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="starlink">#0EA5E9</color>
-    <color name="vsat">#A855F7</color>
-    <color name="ok">#22C55E</color>
-    <color name="warn">#EAB308</color>
-    <color name="danger">#EF4444</color>
-    <color name="neutral">#94A3B8</color>
-    <color name="on_accent">#FFFFFF</color>
+    <!-- Цвета терминалов для уведомлений (не зависят от темы) -->
+    <color name="starlink">#2563EB</color>
+    <color name="vsat">#0D9488</color>
+    <color name="warn">#D97706</color>
+    <color name="neutral">#64748B</color>
 
-    <color name="background">#F1F5F9</color>
-    <color name="surface">#FFFFFF</color>
-    <color name="surface_variant">#E2E8F0</color>
-    <color name="text_primary">#0F172A</color>
-    <color name="text_secondary">#64748B</color>
+    <!-- Обычная тема -->
+    <color name="classic_bg">#F3F4F6</color>
+    <color name="classic_surface">#FFFFFF</color>
+    <color name="classic_text">#111827</color>
+    <color name="classic_text2">#6B7280</color>
+    <color name="classic_accent">#2563EB</color>
+    <color name="classic_stroke">#E5E7EB</color>
+    <color name="classic_starlink">#2563EB</color>
+    <color name="classic_vsat">#0D9488</color>
+    <color name="classic_ok">#16A34A</color>
+    <color name="classic_warn">#D97706</color>
+    <color name="classic_danger">#DC2626</color>
+    <color name="classic_neutral">#9CA3AF</color>
 
-    <color name="launcher_bg">#0B1E3A</color>
+    <!-- Telegram -->
+    <color name="tg_bg">#EFEFF3</color>
+    <color name="tg_surface">#FFFFFF</color>
+    <color name="tg_text">#000000</color>
+    <color name="tg_text2">#8A8A8E</color>
+    <color name="tg_accent">#3390EC</color>
+    <color name="tg_toolbar">#527DA3</color>
+    <color name="tg_stroke">#E6E6E6</color>
+    <color name="tg_starlink">#3390EC</color>
+    <color name="tg_vsat">#8E6CDB</color>
+    <color name="tg_ok">#4FAE4E</color>
+    <color name="tg_warn">#F5A623</color>
+    <color name="tg_danger">#E53935</color>
+    <color name="tg_neutral">#A0A0A5</color>
+
+    <!-- Терминал: всегда тёмный -->
+    <color name="term_bg">#050805</color>
+    <color name="term_surface">#0A120A</color>
+    <color name="term_text">#39FF6A</color>
+    <color name="term_text2">#22A845</color>
+    <color name="term_amber">#FFB000</color>
+    <color name="term_red">#FF5555</color>
+    <color name="term_cyan">#4FD6E6</color>
+
+    <color name="launcher_bg">#16325C</color>
 </resources>

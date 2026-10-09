@@ -12,18 +12,41 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var b: ActivitySettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appTheme = applyAppTheme()
         super.onCreate(savedInstanceState)
         b = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(b.root)
         setSupportActionBar(b.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        b.username.setText(Prefs.username)
-        b.password.setText(Prefs.password)
-        b.host.setText(Prefs.host)
-        b.switchStatusIcon.isChecked = Prefs.showStatusIcon
-        b.switchReminder.isChecked = Prefs.limitReminder
-        b.switchAutoOff.isChecked = Prefs.autoOff
+        // После смены темы экран пересоздаётся - введённое не теряем
+        if (savedInstanceState == null) {
+            b.username.setText(Prefs.username)
+            b.password.setText(Prefs.password)
+            b.host.setText(Prefs.host)
+            b.switchStatusIcon.isChecked = Prefs.showStatusIcon
+            b.switchReminder.isChecked = Prefs.limitReminder
+            b.switchAutoOff.isChecked = Prefs.autoOff
+        }
+
+        b.themeGroup.check(
+            when (appTheme) {
+                AppTheme.CLASSIC -> R.id.themeClassic
+                AppTheme.TELEGRAM -> R.id.themeTelegram
+                AppTheme.TERMINAL -> R.id.themeTerminal
+            }
+        )
+        b.themeGroup.setOnCheckedChangeListener { _, id ->
+            val chosen = when (id) {
+                R.id.themeTelegram -> AppTheme.TELEGRAM
+                R.id.themeTerminal -> AppTheme.TERMINAL
+                else -> AppTheme.CLASSIC
+            }
+            if (chosen != Prefs.theme) {
+                Prefs.theme = chosen
+                recreate()
+            }
+        }
 
         b.btnSave.setOnClickListener {
             save()
@@ -34,6 +57,11 @@ class SettingsActivity : AppCompatActivity() {
         b.version.text = "VSAT STAR для Android, версия ${BuildConfig.VERSION_NAME}"
         b.github.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_URL)))
+        }
+
+        if (appTheme == AppTheme.TERMINAL) {
+            b.toolbar.title = "C:\\VSAT\\SETUP.EXE"
+            b.root.useMonospace()
         }
     }
 

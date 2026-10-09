@@ -1,44 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Обычная тема (светлая/тёмная по системе) -->
     <style name="Theme.VsatStar" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/starlink</item>
-        <item name="colorOnPrimary">@color/on_accent</item>
-        <item name="colorSecondary">@color/vsat</item>
-        <item name="android:colorBackground">@color/background</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="android:statusBarColor">@color/background</item>
-        <item name="android:navigationBarColor">@color/background</item>
+        <item name="vsBackground">@color/classic_bg</item>
+        <item name="vsSurface">@color/classic_surface</item>
+        <item name="vsText">@color/classic_text</item>
+        <item name="vsTextSecondary">@color/classic_text2</item>
+        <item name="vsAccent">@color/classic_accent</item>
+        <item name="vsOnAccent">#FFFFFF</item>
+        <item name="vsToolbarBg">@color/classic_bg</item>
+        <item name="vsToolbarText">@color/classic_text</item>
+        <item name="vsStroke">@color/classic_stroke</item>
+        <item name="vsStrokeWidth">1dp</item>
+        <item name="vsRadius">16dp</item>
+        <item name="vsStarlink">@color/classic_starlink</item>
+        <item name="vsVsat">@color/classic_vsat</item>
+        <item name="vsOk">@color/classic_ok</item>
+        <item name="vsWarn">@color/classic_warn</item>
+        <item name="vsDanger">@color/classic_danger</item>
+        <item name="vsNeutral">@color/classic_neutral</item>
         <item name="android:windowLightStatusBar">@bool/light_bars</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">@bool/light_bars</item>
         <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+        <item name="colorPrimary">?attr/vsAccent</item>
+        <item name="colorOnPrimary">?attr/vsOnAccent</item>
+        <item name="colorSecondaryContainer">?attr/vsStroke</item>
+        <item name="colorOnSecondaryContainer">?attr/vsText</item>
+        <item name="colorSurface">?attr/vsSurface</item>
+        <item name="colorOnSurface">?attr/vsText</item>
+        <item name="colorOnSurfaceVariant">?attr/vsTextSecondary</item>
+        <item name="colorOutline">?attr/vsTextSecondary</item>
+        <item name="android:colorBackground">?attr/vsBackground</item>
+        <item name="android:textColorPrimary">?attr/vsText</item>
+        <item name="android:textColorSecondary">?attr/vsTextSecondary</item>
+        <item name="android:textColorHint">?attr/vsTextSecondary</item>
+        <item name="android:statusBarColor">?attr/vsToolbarBg</item>
+        <item name="android:navigationBarColor">?attr/vsBackground</item>
     </style>
 
-    <style name="Card" parent="Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">@color/surface</item>
-        <item name="cardCornerRadius">20dp</item>
+    <!-- В стиле Telegram -->
+    <style name="Theme.VsatStar.Telegram">
+        <item name="vsBackground">@color/tg_bg</item>
+        <item name="vsSurface">@color/tg_surface</item>
+        <item name="vsText">@color/tg_text</item>
+        <item name="vsTextSecondary">@color/tg_text2</item>
+        <item name="vsAccent">@color/tg_accent</item>
+        <item name="vsToolbarBg">@color/tg_toolbar</item>
+        <item name="vsToolbarText">#FFFFFF</item>
+        <item name="vsStroke">@color/tg_stroke</item>
+        <item name="vsStrokeWidth">0dp</item>
+        <item name="vsRadius">12dp</item>
+        <item name="vsStarlink">@color/tg_starlink</item>
+        <item name="vsVsat">@color/tg_vsat</item>
+        <item name="vsOk">@color/tg_ok</item>
+        <item name="vsWarn">@color/tg_warn</item>
+        <item name="vsDanger">@color/tg_danger</item>
+        <item name="vsNeutral">@color/tg_neutral</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Терминал MS-DOS / Linux: зелёный текст на чёрном, моноширинный шрифт -->
+    <style name="Theme.VsatStar.Terminal">
+        <item name="vsBackground">@color/term_bg</item>
+        <item name="vsSurface">@color/term_surface</item>
+        <item name="vsText">@color/term_text</item>
+        <item name="vsTextSecondary">@color/term_text2</item>
+        <item name="vsAccent">@color/term_text</item>
+        <item name="vsOnAccent">@color/term_bg</item>
+        <item name="vsToolbarBg">@color/term_bg</item>
+        <item name="vsToolbarText">@color/term_text</item>
+        <item name="vsStroke">@color/term_text2</item>
+        <item name="vsStrokeWidth">1dp</item>
+        <item name="vsRadius">0dp</item>
+        <item name="vsStarlink">@color/term_text</item>
+        <item name="vsVsat">@color/term_cyan</item>
+        <item name="vsOk">@color/term_text</item>
+        <item name="vsWarn">@color/term_amber</item>
+        <item name="vsDanger">@color/term_red</item>
+        <item name="vsNeutral">@color/term_text2</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+    </style>
+
+    <style name="Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">?attr/vsSurface</item>
+        <item name="cardCornerRadius">?attr/vsRadius</item>
+        <item name="strokeColor">?attr/vsStroke</item>
+        <item name="strokeWidth">?attr/vsStrokeWidth</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="SectionHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/vsAccent</item>
+    </style>
+
+    <style name="RowTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">?attr/vsText</item>
+    </style>
+
+    <style name="RowSubtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/vsTextSecondary</item>
+    </style>
+
+    <style name="IconCircle">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/bg_circle</item>
+        <item name="android:importantForAccessibility">no</item>
     </style>
 
     <style name="StatCaption">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textColor">?attr/vsTextSecondary</item>
     </style>
 
     <style name="StatValue">
-        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">?attr/vsText</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
-    </style>
-
-    <style name="SectionTitle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/starlink</item>
     </style>
 
     <style name="SettingSwitch">
@@ -46,15 +144,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">48dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">?attr/vsText</item>
     </style>
 
     <style name="SettingDesc">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
         <item name="android:paddingEnd">64dp</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textColor">?attr/vsTextSecondary</item>
     </style>
 </resources>
