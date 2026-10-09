@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Панель судна работает по http, поэтому открытый трафик разрешён.
+     Адрес панели можно поменять в настройках, так что ограничение по домену не ставим. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

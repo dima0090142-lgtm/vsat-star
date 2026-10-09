@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="starlink">#0EA5E9</color>
+    <color name="vsat">#A855F7</color>
+    <color name="ok">#22C55E</color>
+    <color name="warn">#EAB308</color>
+    <color name="danger">#EF4444</color>
+    <color name="neutral">#94A3B8</color>
+    <color name="on_accent">#FFFFFF</color>
+
+    <color name="background">#F1F5F9</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#E2E8F0</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+
+    <color name="launcher_bg">#0B1E3A</color>
+</resources>

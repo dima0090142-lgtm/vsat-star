@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VSAT STAR</string>
+    <string name="settings">Настройки</string>
+    <string name="disconnect">Отключить</string>
+    <string name="traffic">Трафик</string>
+    <string name="refresh">Обновить трафик</string>
+    <string name="downloaded">Загружено</string>
+    <string name="uploaded">Отправлено</string>
+    <string name="remaining_data">Остаток данных</string>
+    <string name="remaining_time">Остаток времени</string>
+    <string name="credentials_hint">Введите логин и пароль от панели судна, чтобы подключаться.</string>
+    <string name="open_settings">Открыть настройки</string>
+
+    <string name="section_account">Вход в панель</string>
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="host">Адрес панели</string>
+    <string name="host_hint">Обычно 192.168.50.2</string>
+    <string name="section_notifications">Уведомления</string>
+    <string name="status_icon">Значок подключения в шторке</string>
+    <string name="status_icon_desc">Показывает Starlink / VSAT / Отключено и кнопки быстрого переключения</string>
+    <string name="reminder">Напоминание о конце лимита</string>
+    <string name="reminder_desc">За 30 минут до конца дневного лимита времени</string>
+    <string name="section_experimental">Экспериментально</string>
+    <string name="auto_off">Автоотключение интернета</string>
+    <string name="auto_off_desc">Если через Wi-Fi телефона час почти нет трафика (меньше 2 МБ), приложение само завершит сессию, чтобы не тратить лимит. Учитывается только трафик этого телефона. Пока функция включена, в шторке висит уведомление.</string>
+    <string name="save">Сохранить</string>
+    <string name="section_about">О программе</string>
+    <string name="github">Исходный код на GitHub</string>
+    <string name="author">Автор: Sukhoverkhii Dmitrii</string>
+</resources>

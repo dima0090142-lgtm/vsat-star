@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="@string/app_name"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- Нет логина/пароля -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/credentialsHint"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/credentials_hint"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOpenSettings"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/open_settings" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Статус -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/statusIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_unknown" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/statusTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/statusDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:visibility="invisible"
+                        app:indicatorSize="28dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Терминалы -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStarlink"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="Starlink"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/ic_starlink"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:iconSize="36dp"
+                    app:strokeWidth="2dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVsat"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="VSAT"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/ic_vsat"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:iconSize="36dp"
+                    app:strokeWidth="2dp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDisconnect"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/disconnect"
+                android:textColor="@color/danger"
+                android:textSize="16sp"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/ic_power"
+                app:iconGravity="textStart"
+                app:iconTint="@color/danger"
+                app:strokeColor="@color/danger" />
+
+            <!-- Трафик -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/traffic"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/usageCaption"
+                                style="@style/StatCaption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRefresh"
+                            style="@style/Widget.Material3.Button.IconButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/refresh"
+                            app:icon="@drawable/ic_refresh"
+                            app:iconTint="@color/text_secondary" />
+                    </LinearLayout>
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:columnCount="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:paddingVertical="8dp">
+
+                            <TextView style="@style/StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/remaining_time" />
+                            <TextView android:id="@+id/valRemainingTime" style="@style/StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:paddingVertical="8dp">
+
+                            <TextView style="@style/StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/remaining_data" />
+                            <TextView android:id="@+id/valRemainingData" style="@style/StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:paddingVertical="8dp">
+
+                            <TextView style="@style/StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/downloaded" />
+                            <TextView android:id="@+id/valDownloaded" style="@style/StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:paddingVertical="8dp">
+
+                            <TextView style="@style/StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/uploaded" />
+                            <TextView android:id="@+id/valUploaded" style="@style/StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </GridLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
