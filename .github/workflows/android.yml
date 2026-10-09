@@ -14,6 +14,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     defaults:
       run:
         working-directory: android
@@ -37,3 +39,20 @@ jobs:
         with:
           name: VsatStar-apk
           path: android/VsatStar.apk
+
+      # Постоянная ссылка для телефона:
+      # https://github.com/dima0090142-lgtm/vsat-star/releases/download/android-latest/VsatStar.apk
+      # Pre-release, чтобы не мешать проверке обновлений Windows-версии (releases/latest).
+      - name: Выложить APK в релиз android-latest
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-latest
+          name: VSAT STAR для Android
+          prerelease: true
+          make_latest: false
+          body: |
+            Последняя сборка Android-приложения (коммит ${{ github.sha }}).
+            Скачайте VsatStar.apk на телефон и установите.
+          files: android/VsatStar.apk
+          fail_on_unmatched_files: true
